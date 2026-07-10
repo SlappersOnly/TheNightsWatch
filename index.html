@@ -137,6 +137,25 @@ section{ position:relative; z-index:2; }
 }
 
 /* ============================================================
+   AUDIO BAR
+   ============================================================ */
+.audio-bar{
+  position:relative;
+  z-index:6;
+  display:flex;
+  justify-content:center;
+  padding:14px 16px 0;
+}
+.audio-bar audio{
+  width:100%;
+  max-width:480px;
+  height:36px;
+  filter:invert(88%) hue-rotate(175deg) contrast(.9);
+  border-radius:6px;
+  box-shadow:0 0 0 1px var(--line), 0 0 16px rgba(0,0,0,.5);
+}
+
+/* ============================================================
    HERO
    ============================================================ */
 .hero{
@@ -752,6 +771,13 @@ section{ position:relative; z-index:2; }
 
 <div class="poster">
 
+  <!-- ============================== AUDIO PLAYER ============================== -->
+  <div class="audio-bar">
+    <audio controls src="dem-titties.mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
   <!-- ambient layers -->
   <div class="snowfall" id="snowfall"></div>
 
@@ -1012,14 +1038,6 @@ section{ position:relative; z-index:2; }
     snowEl.appendChild(f);
   }
 </script>
-
-<!-- Hidden player that loops automatically -->
-<!-- Visible player with volume and play controls -->
-<audio controls>
-  <source src="dem-titties.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
 
 </body>
 </html>
