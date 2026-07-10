@@ -41,6 +41,10 @@
   --victory-glow: rgba(98,192,127,.5);
   --draw:         #e2953a;
   --draw-glow:    rgba(226,149,58,.5);
+  --comeback:      #8fd8ff;
+  --comeback-glow: rgba(143,216,255,.5);
+  --defeat:        #c25a55;
+  --defeat-glow:   rgba(194,90,85,.5);
 
   --edge: 2px;
 }
@@ -357,36 +361,62 @@ section{ position:relative; z-index:2; }
   text-shadow:0 0 12px rgba(215,178,95,.25);
 }
 
-.kvk{
+.kvk-hint{
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--frost-dim);
+  margin:-8px 16px 12px;
+}
+
+.kvk-scroll{
+  display:flex;
+  gap:0;
+  margin:0;
+  padding:6px 16px 20px;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:var(--frost-dim) transparent;
+}
+.kvk-scroll::-webkit-scrollbar{ height:5px; }
+.kvk-scroll::-webkit-scrollbar-thumb{ background:var(--frost-dim); border-radius:3px; }
+.kvk-scroll::-webkit-scrollbar-track{ background:transparent; }
+
+.kvk-card{
   position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  margin:0 16px;
+  flex:0 0 138px;
+  scroll-snap-align:start;
+  padding:16px 10px 18px;
+  text-align:center;
   border:1px solid var(--line);
+  border-left:1px solid var(--line-soft);
   background:var(--ink);
 }
-.kvk::before{
-  /* connecting timeline thread */
-  content:"";
-  position:absolute;
-  left:16.6%; right:16.6%; top:44px;
-  height:1px;
-  background:linear-gradient(90deg, transparent, var(--frost-dim) 15%, var(--frost-dim) 85%, transparent);
-  z-index:0;
-}
-.kvk-col{
-  position:relative;
-  padding:18px 10px 20px;
-  text-align:center;
-  border-left:1px solid var(--line-soft);
-}
-.kvk-col:first-child{ border-left:none; }
+.kvk-card:first-child{ border-left:1px solid var(--line); }
+.kvk-card + .kvk-card{ margin-left:-1px; }
 
+.kvk-num{
+  font-family:'Cinzel', serif;
+  font-weight:600;
+  font-size:12.5px;
+  letter-spacing:.08em;
+  color:var(--gold);
+  margin-bottom:4px;
+}
 .kvk-date{
-  font-size:13px;
-  letter-spacing:.09em;
+  font-size:12px;
+  letter-spacing:.06em;
   color:var(--bone-dim);
   text-transform:uppercase;
+  margin-bottom:2px;
+}
+.kvk-kingdom{
+  font-size:12.5px;
+  letter-spacing:.04em;
+  color:var(--frost-soft);
   margin-bottom:10px;
 }
 .kvk-node{
@@ -399,24 +429,29 @@ section{ position:relative; z-index:2; }
   z-index:1;
 }
 .kvk-icon{ width:26px; height:26px; margin:0 auto 10px; color:var(--bone-dim); }
-.kvk-icon.win{ color:var(--gold); filter:drop-shadow(0 0 5px rgba(215,178,95,.4)); }
+.kvk-icon.domination{ color:var(--gold); filter:drop-shadow(0 0 5px rgba(215,178,95,.4)); }
+.kvk-icon.draw{ color:var(--draw); filter:drop-shadow(0 0 5px rgba(226,149,58,.35)); }
+.kvk-icon.comeback{ color:var(--comeback); filter:drop-shadow(0 0 5px rgba(143,216,255,.35)); }
+.kvk-icon.defeat{ color:var(--defeat); filter:drop-shadow(0 0 5px rgba(194,90,85,.35)); }
 .kvk-icon svg{ width:100%; height:100%; }
 
 .kvk-result{
   font-family:'Cinzel', serif;
   font-weight:700;
-  font-size:17px;
-  letter-spacing:.05em;
+  font-size:15.5px;
+  letter-spacing:.04em;
   margin-bottom:6px;
 }
-.kvk-result.victory{ color:var(--victory); text-shadow:0 0 14px var(--victory-glow); }
+.kvk-result.domination{ color:var(--gold-bright); text-shadow:0 0 14px rgba(215,178,95,.4); }
 .kvk-result.draw{ color:var(--draw); text-shadow:0 0 14px var(--draw-glow); }
+.kvk-result.comeback{ color:var(--comeback); text-shadow:0 0 14px var(--comeback-glow); }
+.kvk-result.defeat{ color:var(--defeat); text-shadow:0 0 14px var(--defeat-glow); }
 
 .kvk-sub{
-  font-size:12.5px;
+  font-size:11.5px;
   line-height:1.3;
   color:var(--bone-dim);
-  letter-spacing:.02em;
+  letter-spacing:.03em;
   text-transform:uppercase;
 }
 
@@ -645,6 +680,26 @@ section{ position:relative; z-index:2; }
       <circle cx="32" cy="57" r="3" fill="currentColor"/>
     </symbol>
 
+    <symbol id="icon-crown" viewBox="0 0 64 64">
+      <path d="M8,46 L11,22 L23,34 L32,16 L41,34 L53,22 L56,46 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect x="8" y="46" width="48" height="7" fill="currentColor"/>
+      <circle cx="11" cy="22" r="3" fill="currentColor"/>
+      <circle cx="32" cy="16" r="3" fill="currentColor"/>
+      <circle cx="53" cy="22" r="3" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="icon-skull" viewBox="0 0 64 64">
+      <path d="M32,8 C18,8 11,18 11,29 C11,37 15,42 19,45 L19,52 C19,54.2 20.8,56 23,56 L26,56 L26,51 L29,51 L29,56 L35,56 L35,51 L38,51 L38,56 L41,56 C43.2,56 45,54.2 45,52 L45,45 C49,42 53,37 53,29 C53,18 46,8 32,8 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+      <circle cx="23.5" cy="29" r="5" fill="currentColor"/>
+      <circle cx="40.5" cy="29" r="5" fill="currentColor"/>
+      <path d="M32,33 L28,42 L36,42 Z" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="icon-handshake" viewBox="0 0 64 64">
+      <path d="M4,27 L15,19 L25,25 L32,19 L39,25 L49,19 L60,27 L60,35 L49,43 L39,37 L32,43 L25,37 L15,43 L4,35 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="32" y1="19" x2="32" y2="43" stroke="currentColor" stroke-width="2.2"/>
+    </symbol>
+
     <symbol id="icon-castle" viewBox="0 0 400 170">
       <!-- back towers -->
       <rect x="18" y="70" width="26" height="90" fill="#0a1424"/>
@@ -766,30 +821,127 @@ section{ position:relative; z-index:2; }
 
   <!-- ============================== KVK RESULTS ============================== -->
   <div class="section-heading">
-    <h2>Our Recent KvK Results</h2>
+    <h2>KvK Battle History</h2>
   </div>
+  <div class="kvk-hint">Swipe for more →</div>
 
-  <div class="kvk">
-    <div class="kvk-col">
-      <div class="kvk-date">25 April</div>
+  <div class="kvk-scroll">
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #15</div>
+      <div class="kvk-date">20 Jun 2026</div>
+      <div class="kvk-kingdom">Kingdom 396</div>
       <div class="kvk-node"></div>
-      <div class="kvk-icon win"><svg><use href="#icon-sword"/></svg></div>
-      <div class="kvk-result victory font-display">Victory</div>
-      <div class="kvk-sub">Prep + Castle Won</div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
     </div>
-    <div class="kvk-col">
-      <div class="kvk-date">23 May</div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #14</div>
+      <div class="kvk-date">23 May 2026</div>
+      <div class="kvk-kingdom">Kingdom 108</div>
       <div class="kvk-node"></div>
-      <div class="kvk-icon"><svg><use href="#icon-shield"/></svg></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
       <div class="kvk-result draw font-display">Draw</div>
-      <div class="kvk-sub">Prep Won, Castle Lost</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
     </div>
-    <div class="kvk-col">
-      <div class="kvk-date">20 June</div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #13</div>
+      <div class="kvk-date">25 Apr 2026</div>
+      <div class="kvk-kingdom">Kingdom 5</div>
       <div class="kvk-node"></div>
-      <div class="kvk-icon win"><svg><use href="#icon-sword"/></svg></div>
-      <div class="kvk-result victory font-display">Victory</div>
-      <div class="kvk-sub">Prep + Castle Won</div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #12</div>
+      <div class="kvk-date">28 Mar 2026</div>
+      <div class="kvk-kingdom">Kingdom 87</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #11</div>
+      <div class="kvk-date">28 Feb 2026</div>
+      <div class="kvk-kingdom">Kingdom 188</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #10</div>
+      <div class="kvk-date">31 Jan 2026</div>
+      <div class="kvk-kingdom">Kingdom 120</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #9</div>
+      <div class="kvk-date">03 Jan 2026</div>
+      <div class="kvk-kingdom">Kingdom 151</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #8</div>
+      <div class="kvk-date">06 Dec 2025</div>
+      <div class="kvk-kingdom">Kingdom 127</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #7</div>
+      <div class="kvk-date">08 Nov 2025</div>
+      <div class="kvk-kingdom">Kingdom 134</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon comeback"><svg><use href="#icon-shield"/></svg></div>
+      <div class="kvk-result comeback font-display">Comeback</div>
+      <div class="kvk-sub">Prep: L · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #6</div>
+      <div class="kvk-date">11 Oct 2025</div>
+      <div class="kvk-kingdom">Kingdom 154</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon defeat"><svg><use href="#icon-skull"/></svg></div>
+      <div class="kvk-result defeat font-display">Defeat</div>
+      <div class="kvk-sub">Prep: L · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #5</div>
+      <div class="kvk-date">14 Sep 2025</div>
+      <div class="kvk-kingdom">Kingdom 136</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon defeat"><svg><use href="#icon-skull"/></svg></div>
+      <div class="kvk-result defeat font-display">Defeat</div>
+      <div class="kvk-sub">Prep: L · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #4</div>
+      <div class="kvk-date">16 Aug 2025</div>
+      <div class="kvk-kingdom">Kingdom 146</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #3</div>
+      <div class="kvk-date">19 Jul 2025</div>
+      <div class="kvk-kingdom">Kingdom 157</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
     </div>
   </div>
 
