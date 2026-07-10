@@ -6,8 +6,12 @@
 <title>The Night's Watch — Kingdom 167</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+  <body>
 
+<!-- ============================================================
+     ICON SPRITE — all glyphs are hand-built line/silhouette art
+     referenced below via <use href="#icon-name">
+     ============================================================ -->
 <svg class="sprite" aria-hidden="true">
   <defs>
 
@@ -49,9 +53,10 @@
       <line x1="23" y1="37" x2="41" y2="37" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
     </symbol>
 
-    <symbol id="icon-raven" viewBox="0 0 64 40">
-      <path d="M10,18 L44,18 L46,16 L54,20 L46,24 L44,22 L10,22 L10,25 L6,25 L6,22 L2,22 L2,18 L6,18 L6,15 L10,15 Z" fill="currentColor"/>
-    </symbol>
+   <symbol id="icon-raven" viewBox="0 0 64 40">
+  <path d="M10,18 L44,18 L46,16 L54,20 L46,24 L44,22 L10,22 L10,25 L6,25 L6,22 L2,22 L2,18 L6,18 L6,15 L10,15 Z" fill="currentColor"/>
+</symbol>
+
 
     <symbol id="icon-snowflake" viewBox="0 0 64 64">
       <g stroke="currentColor" stroke-width="3" stroke-linecap="round">
@@ -103,11 +108,13 @@
       <path d="M32,33 L28,42 L36,42 Z" fill="currentColor"/>
     </symbol>
 
-    <symbol id="icon-handshake" viewBox="0 0 64 40">
-      <path d="M10,18 L44,18 L46,16 L54,20 L46,24 L44,22 L10,22 L10,25 L6,25 L6,22 L2,22 L2,18 L6,18 L6,15 L10,15 Z" fill="currentColor"/>
-    </symbol>
+<symbol id="icon-handshake" viewBox="0 0 64 40">
+  <path d="M10,18 L44,18 L46,16 L54,20 L46,24 L44,22 L10,22 L10,25 L6,25 L6,22 L2,22 L2,18 L6,18 L6,15 L10,15 Z" fill="currentColor"/>
+</symbol>
+
 
     <symbol id="icon-castle" viewBox="0 0 400 170">
+      <!-- back towers -->
       <rect x="18" y="70" width="26" height="90" fill="#0a1424"/>
       <rect x="12" y="58" width="8" height="14" fill="#0a1424"/>
       <rect x="24" y="58" width="8" height="14" fill="#0a1424"/>
@@ -117,6 +124,7 @@
       <rect x="364" y="58" width="8" height="14" fill="#0a1424"/>
       <rect x="376" y="58" width="8" height="14" fill="#0a1424"/>
 
+      <!-- curtain wall -->
       <rect x="60" y="100" width="280" height="60" fill="#0c1830"/>
       <rect x="60" y="90" width="16" height="12" fill="#0c1830"/>
       <rect x="84" y="90" width="16" height="12" fill="#0c1830"/>
@@ -125,11 +133,13 @@
       <rect x="300" y="90" width="16" height="12" fill="#0c1830"/>
       <rect x="324" y="90" width="16" height="12" fill="#0c1830"/>
 
+      <!-- side towers -->
       <rect x="70" y="42" width="34" height="118" fill="#0e1c38"/>
       <polygon points="70,42 87,14 104,42" fill="#0e1c38"/>
       <rect x="296" y="42" width="34" height="118" fill="#0e1c38"/>
       <polygon points="296,42 313,14 330,42" fill="#0e1c38"/>
 
+      <!-- keep -->
       <rect x="150" y="18" width="100" height="142" fill="#132444"/>
       <rect x="150" y="6" width="14" height="14" fill="#132444"/>
       <rect x="172" y="6" width="14" height="14" fill="#132444"/>
@@ -137,36 +147,46 @@
       <rect x="216" y="6" width="14" height="14" fill="#132444"/>
       <rect x="236" y="6" width="14" height="14" fill="#132444"/>
 
+      <!-- gate -->
       <path d="M180,160 L180,120 A20,20 0 0 1 220,120 L220,160 Z" fill="#04070d"/>
 
+      <!-- windows (glow) -->
       <rect x="163" y="46" width="7" height="12" fill="#e2953a" opacity=".85"/>
       <rect x="196" y="38" width="7" height="12" fill="#e2953a" opacity=".7"/>
       <rect x="228" y="46" width="7" height="12" fill="#e2953a" opacity=".85"/>
       <rect x="83" y="72" width="6" height="10" fill="#e2953a" opacity=".6"/>
       <rect x="309" y="72" width="6" height="10" fill="#e2953a" opacity=".6"/>
     </symbol>
+
   </defs>
 </svg>
 
 <div class="poster">
+
+  <!-- ============================== AUDIO PLAYER ============================== -->
   <div class="audio-bar">
     <audio controls src="dem-titties.mp3">
       Your browser does not support the audio element.
     </audio>
   </div>
 
+  <!-- ambient layers -->
   <div class="snowfall" id="snowfall"></div>
 
+  <!-- ============================== HERO ============================== -->
   <section class="hero">
     <div class="stars" id="stars"></div>
+
     <div class="ravens">
       <svg class="raven-1"><use href="#icon-raven"/></svg>
       <svg class="raven-2"><use href="#icon-raven"/></svg>
       <svg class="raven-3"><use href="#icon-raven"/></svg>
     </div>
+
     <div class="banner">
       <h1 class="font-display">The Night's<br>Watch</h1>
     </div>
+
     <div class="castle-wrap">
       <div class="castle-glow"></div>
       <svg viewBox="0 0 400 170" width="100%" style="max-width:420px; position:relative; z-index:1;">
@@ -175,6 +195,7 @@
     </div>
   </section>
 
+  <!-- ============================== IDENTITY ============================== -->
   <div class="identity">
     <div class="medallion"><svg><use href="#icon-raven" viewBox="0 0 64 40"/></svg></div>
     <div class="identity-text font-display">
@@ -182,6 +203,7 @@
     </div>
   </div>
 
+  <!-- ============================== EVENTS ============================== -->
   <div class="events">
     <div class="event-card">
       <div class="event-icon"><svg><use href="#icon-bear"/></svg></div>
@@ -190,93 +212,187 @@
     </div>
     <div class="event-card">
       <div class="event-icon"><svg><use href="#icon-swords"/></svg></div>
-      <div class="event-name font-display">Plague</div>
-      <div class="event-times">12:00 <span class="unit">UTC</span></div>
+      <div class="event-name font-display">Swordland</div>
+      <div class="event-times">02:00 &amp; 19:00 <span class="unit">UTC</span></div>
     </div>
     <div class="event-card">
       <div class="event-icon"><svg><use href="#icon-trident"/></svg></div>
-      <div class="event-name font-display">Reservoir</div>
-      <div class="event-times">20:00 <span class="unit">UTC</span></div>
+      <div class="event-name font-display">Tri-Alliance</div>
+      <div class="event-times">02:00 &amp; 19:00 <span class="unit">UTC</span></div>
     </div>
     <div class="event-card">
       <div class="event-icon"><svg><use href="#icon-helm"/></svg></div>
-      <div class="event-name font-display">Foundry</div>
-      <div class="event-times">19:00 <span class="unit">UTC</span></div>
+      <div class="event-name font-display">Vikings</div>
+      <div class="event-times">02:00 &amp; 18:15 <span class="unit">UTC</span></div>
     </div>
   </div>
 
-  <section>
-    <div class="section-heading">
-      <h2>KvK Chronology</h2>
-    </div>
-    <div class="kvk-hint">Swipe chronologically / Left-to-Right →</div>
-    <div class="kvk-scroll">
-      <div class="kvk-card">
-        <div class="kvk-num">KvK I</div>
-        <div class="kvk-date">Dec 2024</div>
-        <div class="kvk-kingdom">vs #142</div>
-        <div class="kvk-node"></div>
-        <div class="kvk-icon domination"><svg><use href="#icon-shield"/></svg></div>
-        <div class="kvk-result domination">Victory</div>
-        <div class="kvk-sub">Domination</div>
-      </div>
-      <div class="kvk-card">
-        <div class="kvk-num">KvK II</div>
-        <div class="kvk-date">Feb 2025</div>
-        <div class="kvk-kingdom">vs #139</div>
-        <div class="kvk-node"></div>
-        <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
-        <div class="kvk-result draw">Stalemate</div>
-        <div class="kvk-sub">Tactical Draw</div>
-      </div>
-      <div class="kvk-card">
-        <div class="kvk-num">KvK III</div>
-        <div class="kvk-date">Apr 2025</div>
-        <div class="kvk-kingdom">vs #181</div>
-        <div class="kvk-node"></div>
-        <div class="kvk-icon comeback"><svg><use href="#icon-sword"/></svg></div>
-        <div class="kvk-result comeback">Victory</div>
-        <div class="kvk-sub">Comeback</div>
-      </div>
-      <div class="kvk-card">
-        <div class="kvk-num">KvK IV</div>
-        <div class="kvk-date">Jun 2025</div>
-        <div class="kvk-kingdom">vs #110</div>
-        <div class="kvk-node"></div>
-        <div class="kvk-icon defeat"><svg><use href="#icon-skull"/></svg></div>
-        <div class="kvk-result defeat">Defeat</div>
-        <div class="kvk-sub">Overwhelmed</div>
-      </div>
-      <div class="kvk-card">
-        <div class="kvk-num">KvK V</div>
-        <div class="kvk-date">Aug 2025</div>
-        <div class="kvk-kingdom">vs #125</div>
-        <div class="kvk-node"></div>
-        <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
-        <div class="kvk-result domination">Victory</div>
-        <div class="kvk-sub">Supreme Control</div>
-      </div>
-    </div>
-  </section>
+  <!-- ============================== FROST DIVIDER ============================== -->
+  <div class="frost-divider">
+    <svg viewBox="0 0 640 34" preserveAspectRatio="none">
+      <path d="M0,17 L180,17 L200,6 L230,17 L410,17 L440,26 L470,17 L640,17"/>
+      <path class="bright" d="M0,17 L180,17 L200,6 L230,17 L410,17 L440,26 L470,17 L640,17"/>
+    </svg>
+  </div>
 
+  <!-- ============================== KVK RESULTS ============================== -->
+  <div class="section-heading">
+    <h2>KvK Battle History</h2>
+  </div>
+  <div class="kvk-hint">Swipe for more →</div>
+
+  <div class="kvk-scroll">
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #15</div>
+      <div class="kvk-date">20 Jun 2026</div>
+      <div class="kvk-kingdom">Kingdom 396</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #14</div>
+      <div class="kvk-date">23 May 2026</div>
+      <div class="kvk-kingdom">Kingdom 108</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #13</div>
+      <div class="kvk-date">25 Apr 2026</div>
+      <div class="kvk-kingdom">Kingdom 5</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #12</div>
+      <div class="kvk-date">28 Mar 2026</div>
+      <div class="kvk-kingdom">Kingdom 87</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #11</div>
+      <div class="kvk-date">28 Feb 2026</div>
+      <div class="kvk-kingdom">Kingdom 188</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #10</div>
+      <div class="kvk-date">31 Jan 2026</div>
+      <div class="kvk-kingdom">Kingdom 120</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #9</div>
+      <div class="kvk-date">03 Jan 2026</div>
+      <div class="kvk-kingdom">Kingdom 151</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #8</div>
+      <div class="kvk-date">06 Dec 2025</div>
+      <div class="kvk-kingdom">Kingdom 127</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #7</div>
+      <div class="kvk-date">08 Nov 2025</div>
+      <div class="kvk-kingdom">Kingdom 134</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon comeback"><svg><use href="#icon-shield"/></svg></div>
+      <div class="kvk-result comeback font-display">Comeback</div>
+      <div class="kvk-sub">Prep: L · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #6</div>
+      <div class="kvk-date">11 Oct 2025</div>
+      <div class="kvk-kingdom">Kingdom 154</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon defeat"><svg><use href="#icon-skull"/></svg></div>
+      <div class="kvk-result defeat font-display">Defeat</div>
+      <div class="kvk-sub">Prep: L · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #5</div>
+      <div class="kvk-date">14 Sep 2025</div>
+      <div class="kvk-kingdom">Kingdom 136</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon defeat"><svg><use href="#icon-skull"/></svg></div>
+      <div class="kvk-result defeat font-display">Defeat</div>
+      <div class="kvk-sub">Prep: L · Battle: L</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #4</div>
+      <div class="kvk-date">16 Aug 2025</div>
+      <div class="kvk-kingdom">Kingdom 146</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon domination"><svg><use href="#icon-crown"/></svg></div>
+      <div class="kvk-result domination font-display">Domination</div>
+      <div class="kvk-sub">Prep: W · Battle: W</div>
+    </div>
+    <div class="kvk-card">
+      <div class="kvk-num font-display">KvK #3</div>
+      <div class="kvk-date">19 Jul 2025</div>
+      <div class="kvk-kingdom">Kingdom 157</div>
+      <div class="kvk-node"></div>
+      <div class="kvk-icon draw"><svg><use href="#icon-handshake"/></svg></div>
+      <div class="kvk-result draw font-display">Draw</div>
+      <div class="kvk-sub">Prep: W · Battle: L</div>
+    </div>
+  </div>
+
+  <!-- ============================== FROST DIVIDER ============================== -->
+  <div class="frost-divider">
+    <svg viewBox="0 0 640 34" preserveAspectRatio="none">
+      <path d="M0,17 L150,17 L172,27 L205,17 L400,17 L422,8 L455,17 L640,17"/>
+      <path class="bright" d="M0,17 L150,17 L172,27 L205,17 L400,17 L422,8 L455,17 L640,17"/>
+    </svg>
+  </div>
+
+<!-- ============================== RECRUITMENT ============================== -->
   <div class="recruit">
-    <div class="recruit-raven"><svg><use href="#icon-raven"/></svg></div>
+    <div class="recruit-raven">
+      <svg viewBox="0 0 64 64"><use href="#icon-raven" x="0" y="14" width="64" height="40"/><circle class="eye" cx="24" cy="26" r="1.6"/></svg>
+    </div>
+
     <div class="recruit-top">
       <div class="slots">
-        <div class="num">12</div>
-        <div class="lbl">Slots Left</div>
+        <div class="num font-display">25</div>
+        <div class="lbl">Slots<br>Available</div>
       </div>
       <div class="scroll-icon"><svg><use href="#icon-scroll"/></svg></div>
       <div class="recruit-copy">
-        <h3>Join the Garrison</h3>
-        <p>Seeking battle-tested wanderers for the coming frost. Standard t1-t3 requirements apply. Contact our High Steward prior to migration cycles.</p>
+        <h3>Sworn Brothers Needed</h3>
+        <p>All applicants must possess an intolerance to the undead. Bonus points if you have faced a White Walker.</p>
       </div>
     </div>
+
     <div class="recruit-foot">
-      Orders reviewed by Transfer Manager <span class="name">[RYL] Slickfinger</span>
+      Applications reviewed by Transfer Manager <span class="name">[RYL] Slickfinger</span>
     </div>
   </div>
 
+  <!-- ============================== FOOTER ============================== -->
   <footer class="footer">
     <div class="footer-flakes">
       <div class="footer-rule"></div>
@@ -307,10 +423,10 @@
   for(let i=0;i<34;i++){
     const f = document.createElement('span');
     f.style.left = Math.random()*100+'%';
-    const dur = (12 + Math.random()*16).toFixed(1);
-    const delay = (Math.random()*-20).toFixed(1);
-    f.style.animationDuration = dur + 's';
-    f.style.animationDelay = delay + 's';
+    const dur = 10 + Math.random()*14;
+    f.style.animationDuration = dur+'s';
+    f.style.animationDelay = (-Math.random()*dur)+'s';
+    f.style.width = f.style.height = (1.5 + Math.random()*2.2)+'px';
     snowEl.appendChild(f);
   }
 </script>
